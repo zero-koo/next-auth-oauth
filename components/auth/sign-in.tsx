@@ -14,6 +14,14 @@ function SignIn() {
       <form
         action={async () => {
           'use server';
+          await signIn('naver');
+        }}
+      >
+        <button type="submit">Signin with Naver</button>
+      </form>
+      <form
+        action={async () => {
+          'use server';
           await signIn('kakao');
         }}
       >
