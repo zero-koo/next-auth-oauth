@@ -17,10 +17,10 @@ type AuthFormProps = React.PropsWithChildren<{
 
 const AuthForm = ({ title, redirect }: AuthFormProps) => {
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get('callbackUrl');
+  const redirectTo = searchParams.get('redirect');
 
   const login = (site: 'google' | 'naver' | 'kakao') =>
-    socialLogin(site, { redirect, redirectTo: callbackUrl ?? undefined });
+    socialLogin(site, { redirect, redirectTo: redirectTo ?? undefined });
 
   return (
     <Card className="w-[360px]">
