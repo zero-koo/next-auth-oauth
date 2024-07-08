@@ -12,14 +12,15 @@ import OAuthButton from './o-auth-button';
 
 type AuthFormProps = React.PropsWithChildren<{
   title: string;
+  redirect?: boolean;
 }>;
 
-const AuthForm = ({ title }: AuthFormProps) => {
+const AuthForm = ({ title, redirect }: AuthFormProps) => {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl');
 
   const login = (site: 'google' | 'naver' | 'kakao') =>
-    socialLogin(site, callbackUrl ?? undefined);
+    socialLogin(site, { redirect, redirectTo: callbackUrl ?? undefined });
 
   return (
     <Card className="w-[360px]">
