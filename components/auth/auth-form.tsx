@@ -1,5 +1,8 @@
+'use client';
+
 import React from 'react';
-import { googleLogin, kakaoLogin, naverLogin } from '@/actions/auth/sign-in';
+import { useSearchParams } from 'next/navigation';
+import { socialLogin } from '@/actions/auth/sign-in';
 import { FaGoogle } from 'react-icons/fa';
 import { SiKakaotalk, SiNaver } from 'react-icons/si';
 
@@ -12,6 +15,12 @@ type AuthFormProps = React.PropsWithChildren<{
 }>;
 
 const AuthForm = ({ title }: AuthFormProps) => {
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl');
+
+  const login = (site: 'google' | 'naver' | 'kakao') =>
+    socialLogin(site, callbackUrl ?? undefined);
+
   return (
     <Card className="w-[360px]">
       <CardHeader>
@@ -20,13 +29,13 @@ const AuthForm = ({ title }: AuthFormProps) => {
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-2.5">
-        <form action={googleLogin}>
+        <form action={() => login('google')}>
           <OAuthButton icon={FaGoogle} siteName="구글" />
         </form>
-        <form action={naverLogin}>
+        <form action={() => login('naver')}>
           <OAuthButton icon={SiNaver} siteName="네이버" />
         </form>
-        <form action={kakaoLogin}>
+        <form action={() => login('kakao')}>
           <OAuthButton icon={SiKakaotalk} siteName="카카오" />
         </form>
       </CardContent>

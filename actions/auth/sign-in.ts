@@ -1,18 +1,13 @@
 'use server';
 
 import { signIn } from '@/auth';
+import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
 
-export const googleLogin = () =>
-  signIn('google', {
-    redirectTo: '/',
+export const socialLogin = (
+  site: Parameters<typeof signIn>[0],
+  redirectTo?: string
+) => {
+  return signIn(site, {
+    redirectTo: redirectTo ?? DEFAULT_LOGIN_REDIRECT,
   });
-
-export const naverLogin = () =>
-  signIn('naver', {
-    redirectTo: '/',
-  });
-
-export const kakaoLogin = () =>
-  signIn('kakao', {
-    redirectTo: '/',
-  });
+};
