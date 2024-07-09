@@ -1,6 +1,6 @@
 # Next.js 소셜 로그인 구현 예제
 
-이 레포지토리는 Next.js와 NextAuth.js(AuthJS)를 사용하여 소셜 로그인을 구현한 간단한 예제입니다. 사용자는 Google, Naver, Kakao 계정을 통해 로그인할 수 있습니다. 또한, Next.js 미들웨어를 사용하여 프라이빗 및 퍼블릭 라우트를 효과적으로 관리합니다.
+이 레포지토리는 Next.js와 NextAuth.js(AuthJS), Prisma를 사용하여 소셜 로그인을 구현한 간단한 예제입니다. 사용자는 Google, Naver, Kakao 계정을 통해 로그인할 수 있습니다. 또한, Next.js 미들웨어를 사용하여 프라이빗 및 퍼블릭 라우트를 효과적으로 관리합니다.
 
 ## 주요 기능
 
